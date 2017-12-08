@@ -218,7 +218,8 @@ export default class Analytics {
         body: JSON.stringify(data),
         method: 'post',
         headers: {
-          Authorization: `Basic ${base64.encode(this.writeKey)}`,
+          // Our specilized proxy requires the auth header to be renamed
+          'Segment-Auth': `Basic ${base64.encode(this.writeKey)}`,
           'Content-Type': 'application/json; charset=utf-8',
           'X-Requested-With': 'XMLHttpRequest',
         },
